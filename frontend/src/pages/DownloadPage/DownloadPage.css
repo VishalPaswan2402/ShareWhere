@@ -1,0 +1,14 @@
+.secretCode {
+    font-size: 1.2rem;
+    text-align: center;
+    outline-color: blue;
+    border: none;
+    border: 2px solid black;
+    height: 40px;
+    border-radius: 7px;
+}
+
+.req {
+    color: red;
+    font-size: 0.8rem;
+}

@@ -1,0 +1,14 @@
+.home .title .logo {
+    max-width: 40px;
+}
+
+.home .title .head {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.home .title .slogan {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgb(67, 66, 66);
+}

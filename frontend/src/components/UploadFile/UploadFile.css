@@ -1,0 +1,26 @@
+.uploadBox:hover .uploadFile {
+    color: blue;
+    border: 2px solid blue;
+}
+
+.uploadFile {
+    padding: 5px;
+    max-width: 250px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.uploadFile p {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.uploadFile img {
+    width: 40px;
+}
