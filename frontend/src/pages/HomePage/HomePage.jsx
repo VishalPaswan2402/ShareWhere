@@ -3,7 +3,6 @@ import Logo from '../../components/Logo/Logo'
 import Button from '../../components/Button/Button'
 import './HomePage.css'
 import { useNavigate } from 'react-router-dom';
-import DownloadPage from '../DownloadPage/DownloadPage';
 
 export default function HomePage(props) {
     const navigate = useNavigate();

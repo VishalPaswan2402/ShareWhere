@@ -3,7 +3,7 @@ import UploadPage from './pages/UploadPage/UploadPage'
 import HomePage from './pages/HomePage/HomePage'
 import DownloadPage from './pages/DownloadPage/DownloadPage'
 import CodePage from './pages/CodePage/CodePage'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Router, Routes } from 'react-router-dom'
 
 function App() {
 
