@@ -1,10 +1,15 @@
 import express from "express";
 const app = express();
 
-const port= process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
-app.get('/', function (req, res) {
-    res.send('Hello World')
+app.use(express.json());
+
+app.post("/api/uploadFileToShare", async (req, res) => {
+    console.log("Hitted");
+    res.json({ message: "File uploaded successfully" });
 })
 
-app.listen(port)
+app.listen(port, () => {
+    console.log("Server is running at port", port)
+})

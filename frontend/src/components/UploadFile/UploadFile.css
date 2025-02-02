@@ -24,3 +24,7 @@
 .uploadFile img {
     width: 40px;
 }
+.error{
+    color: red;
+    font-size: 0.8rem;
+}
