@@ -5,11 +5,11 @@
     border: 2px solid blue;
     background-color: rgba(139, 177, 248, 0.596);
     color: black;
-    margin: 20px auto;
+    margin: 15px auto;
     cursor: pointer;
 }
 
 .submit-btn:hover {
-    background-color: rgba(26, 38, 205, 0.653);
+    background-color: rgba(26, 38, 205, 0.692);
     color: white;
 }

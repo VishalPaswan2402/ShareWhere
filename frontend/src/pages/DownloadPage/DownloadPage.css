@@ -12,3 +12,17 @@
     color: red;
     font-size: 0.8rem;
 }
+.downDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.planeImg{
+    max-width: 85px;
+}
+.fileType{
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: gray;
+}

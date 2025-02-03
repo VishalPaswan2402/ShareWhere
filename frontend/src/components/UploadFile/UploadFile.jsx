@@ -4,8 +4,13 @@ import axios from "axios";
 import './UploadFile.css'
 import assets from '../../assets/assets.js'
 import { useNavigate } from "react-router-dom";
+import Loader from "../Loader/Loader.jsx";
+import Button from "../Button/Button.jsx";
+
 
 export default function UploadFile() {
+    const backend_url = "http://localhost:8080";
+    
     const navigate = useNavigate();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const selectedFile = watch("fileUploaded");
@@ -25,7 +30,7 @@ export default function UploadFile() {
             return;
         }
         const file = selectedFile[0];
-        console.log(file.size);
+        // console.log(file.size);
         const formData = new FormData();
         formData.append("file", file);
 
@@ -34,6 +39,7 @@ export default function UploadFile() {
 
         const fileSizeInBytes = file.size;
         const maxFileSize = 5 * 1024 * 1024;
+
         if (fileSizeInBytes > maxFileSize) {
             setTimeout(() => {
                 setUploading(false);
@@ -45,7 +51,7 @@ export default function UploadFile() {
 
         try {
             const response = await axios.post(
-                "/api/sharewhere/uploadFileToShare",
+                backend_url + "/api/sharewhere/uploadFileToShare",
                 formData,
                 {
                     headers: { "Content-Type": "multipart/form-data" }
@@ -71,7 +77,7 @@ export default function UploadFile() {
             <form onSubmit={uploadFileToServer}>
                 {!uploading ?
                     <div className="uploadBox">
-                        <input type="file" id="image" hidden {...register("fileUploaded", { required: true })} />
+                        <input type="file" id="image" hidden accept="image/png, image/jpeg, image/jpg, image/gif, image/webp" {...register("fileUploaded", { required: true })} />
                         <label htmlFor="image" className="uploadFile">
                             <img src={assets.uploadFileImage} alt='' />
                             <p>
@@ -82,13 +88,12 @@ export default function UploadFile() {
                             <img src={assets.uploadFileImage} alt='' />
                         </label>
                         {isFile ? <span className='error'>{errorMessage}</span> : null}
-                    </div> : <div className="loaderDiv">
-                        <img className="loader" src={assets.loader} alt="" />
-                        <p>Securing And Sharing...</p>
                     </div>
+                    :
+                    <Loader textMsg="Securing And Sharing..." />
                 }
                 {!uploading ?
-                    <button className='submit-btn' type="submit">Secure & Share</button>
+                    <Button type="submit" label="Secure & Share" />
                     :
                     null
                 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import Logo from '../../components/Logo/Logo'
 import { useLocation } from 'react-router-dom'
 import './CodePage.css'
 
@@ -9,7 +8,6 @@ export default function CodePage(props) {
 
     return (
         <>
-            <Logo />
             <p className='textCode'>Secret Code To Download Your File</p>
             <p className='codeNum'>{secretKey}</p>
         </>

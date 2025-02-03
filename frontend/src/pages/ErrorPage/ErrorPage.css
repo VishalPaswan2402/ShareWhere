@@ -1,0 +1,24 @@
+.error-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.errImg {
+    max-height: 140px;
+}
+
+.error-div p {
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+.error-div a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: contents;
+}
+
+.error-div a:hover {
+    color: brown;
+}
