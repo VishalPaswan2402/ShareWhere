@@ -10,7 +10,7 @@ import Button from "../Button/Button.jsx";
 
 export default function UploadFile() {
     const backend_url = "http://localhost:8080";
-    
+
     const navigate = useNavigate();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const selectedFile = watch("fileUploaded");
@@ -57,15 +57,15 @@ export default function UploadFile() {
                     headers: { "Content-Type": "multipart/form-data" }
                 }
             );
-
-            console.log("Upload Successful:", response.data);
-            const responseData = response.data;
-            navigate("/secretCodePage", {
-                state:
-                {
-                    secretKey: response.data.secretCode
-                }
-            });
+            if (response) {
+                console.log("Upload Successful:", response.data);
+                navigate("/secretCodePage", {
+                    state:
+                    {
+                        secretKey: response.data.secretCode
+                    }
+                });
+            }
         } catch (error) {
             console.error("Upload Error:", error);
         }

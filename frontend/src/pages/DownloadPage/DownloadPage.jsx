@@ -7,7 +7,7 @@ import Loader from '../../components/Loader/Loader'
 import assets from '../../assets/assets'
 
 export default function DownloadPage(props) {
-    const backend_url="http://localhost:8080";
+    const backend_url = "http://localhost:8080";
 
     const [isKey, setIsKey] = useState(false);
     const [searching, setSearching] = useState(false);
@@ -36,13 +36,11 @@ export default function DownloadPage(props) {
         setErrMsg(null);
         try {
             setSearching(true);
-            const response = await axios.post(backend_url+"/api/sharewhere/downloadFile", { secretKey });
-            if (response) {
-                console.log(response.data);
-                setFileType(response.data.dataType);
-                setUrlLink(response.data.dataUrl);
-                setDownloadAvl(true);
-            }
+            const response = await axios.post(backend_url + "/api/sharewhere/downloadFile", { secretKey });
+            console.log(response.data);
+            setFileType(response.data.dataType);
+            setUrlLink(response.data.dataUrl);
+            setDownloadAvl(true);
         } catch (error) {
             setErrMsg(error.response.data.message + " ! Check your secret code.");
             setIsKey(true);
@@ -68,7 +66,7 @@ export default function DownloadPage(props) {
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            
+
             window.URL.revokeObjectURL(blobUrl); // Clean up memory
         } catch (error) {
             console.error("Download failed", error);

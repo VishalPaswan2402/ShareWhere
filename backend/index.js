@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 import cors from "cors";
 import uploadFileRouter from './routers/uploadFile.js'
 import downloadFileRouter from './routers/downloadFile.js'
-import randomRouter from './routers/random.js';
 
 dotenv.config();
 const app = express();
@@ -35,7 +34,6 @@ cloudinary.config({
 // api routes
 app.use("/api/sharewhere", uploadFileRouter);
 app.use("/api/sharewhere", downloadFileRouter);
-app.use("/api/sharewhere", randomRouter);
 
 app.listen(port, () => {
     console.log("Server is running at port", port);
