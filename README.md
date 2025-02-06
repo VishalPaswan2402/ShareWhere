@@ -44,19 +44,27 @@ This is a simple **MERN (MongoDB, Express, React, Node.js)** application that al
 
 ### Steps
 
-1 **Clone the repository:**
+1. **Clone the repository:**
 
-git clone https://github.com/VishalPaswan2402/ShareWhere.git
-cd share-images
+    ```bash
+    git clone https://github.com/VishalPaswan2402/ShareWhere.git
+    cd share-images
+    ```
 
-2 **Navigate to the backend directory:**
-cd backend
+2. **Navigate to the backend directory:**
 
-3 **Install backend dependencies:**
-npm install
+    ```bash
+    cd backend
+    ```
 
-4 **Set up environment variables:**
-- Create a .env file in the backend directory and add your credentials:
+3. **Install backend dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+4. **Set up environment variables:**
+   - Create a `.env` file in the backend directory and add your credentials:
 
     ```bash
     DATABASE_URL=your_mongo_database_url
@@ -64,25 +72,39 @@ npm install
     CLOUDINARY_API_KEY=your_cloudinary_api_key
     CLOUDINARY_API_SECRET=your_cloudinary_api_secret
     FRONTEND_ORIGIN=front_end_url
+    ```
 
-- **Start the backend server:**
-npm start
+5. **Start the backend server:**
 
-6 **Navigate to the frontend directory:**
-cd frontend
+    ```bash
+    node index.js
+    ```
 
-7 **Install frontend dependencies:**
-npm install
+6. **Navigate to the frontend directory:**
 
-8 **.env setup**
-Update the API endpoint URL in your frontend to match your backend server. You can configure this in your .env or directly in the API call files.
+    ```bash
+    cd frontend
+    ```
 
-9 **Start the frontend development server:**
-npm start
+7. **Install frontend dependencies:**
 
-10 **Running server**
-- The frontend will be running on http://localhost:5173.
-- The backend server will be running on http://localhost:5174.
+    ```bash
+    npm install
+    ```
+
+8. **.env setup:**
+   Update the API endpoint URL in your frontend to match your backend server. You can configure this in your `.env` or directly in the API call files.
+
+9. **Start the frontend development server:**
+
+    ```bash
+    npm run dev
+    ```
+
+10. **Running server:**
+    - The frontend will be running on `http://localhost:5173`.
+    - The backend server will be running on `http://localhost:5174`.
+
 
 ## Usage
 - Open the application in your browser.
