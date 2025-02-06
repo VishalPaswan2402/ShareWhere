@@ -44,20 +44,23 @@ This is a simple **MERN (MongoDB, Express, React, Node.js)** application that al
 
 ### Steps
 
-1 **Clone the repository:**
-
-git clone https://github.com/yourusername/share-images.git
+**Clone the repository:**
+</br>
+git clone https://github.com/VishalPaswan2402/ShareWhere.git
+</br>
 cd share-images
 
-2 **Navigate to the backend directory:**
+**Navigate to the backend directory:**
+</br>
 cd backend
 
-3 **Install backend dependencies:**
+**Install backend dependencies:**
+</br>
 npm install
 
-4 **Set up environment variables:**
-- Create a .env file in the backend directory and add your credentials:
-
+**Set up environment variables:**
+</br>
+Create a .env file in the backend directory and add your credentials:
     ```bash
     DATABASE_URL=your_mongo_database_url
     CLOUD_NAME=your_cloudinary_cloud_name
@@ -65,31 +68,37 @@ npm install
     CLOUDINARY_API_SECRET=your_cloudinary_api_secret
     FRONTEND_ORIGIN=front_end_url
 
-5 **Start the backend server:**
+**Start the backend server:**
+</br>
 npm start
 
-6 **Navigate to the frontend directory:**
+**Navigate to the frontend directory:**
+</br>
 cd frontend
 
-7 **Install frontend dependencies:**
+**Install frontend dependencies:**
+</br>
 npm install
 
-8 **.env setup**
+**.env setup**
+</br>
 Update the API endpoint URL in your frontend to match your backend server. You can configure this in your .env or directly in the API call files.
 
-9 **Start the frontend development server:**
+**Start the frontend development server:**
+</br>
 npm start
 
-10 **Running server**
+**Running server**
+</br>
 - The frontend will be running on http://localhost:5173.
 - The backend server will be running on http://localhost:5174.
 
 ## Usage
-- 1. Open the application in your browser.
-- 2. Click on the "Choose File" button to select an image from your device.
-- 3. Click "Upload & Share" to upload the image to the server.
-- 4. Once the upload is complete, a secret code will be provided.
-- 5. To download the image, enter the secret code on the download image.
+- Open the application in your browser.
+- Click on the "Choose File" button to select an image from your device.
+- Click "Upload & Share" to upload the image to the server.
+- Once the upload is complete, a secret code will be provided.
+- To download the image, enter the secret code on the download image.
 
 ## Additional features:
 - **Simplicity**: Easy to use with minimal steps—just upload, share, and download using a secret code.
