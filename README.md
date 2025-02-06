@@ -44,23 +44,20 @@ This is a simple **MERN (MongoDB, Express, React, Node.js)** application that al
 
 ### Steps
 
-**Clone the repository:**
-</br>
-git clone https://github.com/VishalPaswan2402/ShareWhere.git
-</br>
+1 **Clone the repository:**
+
+git clone https://github.com/yourusername/share-images.git
 cd share-images
 
-**Navigate to the backend directory:**
-</br>
+2 **Navigate to the backend directory:**
 cd backend
 
-**Install backend dependencies:**
-</br>
+3 **Install backend dependencies:**
 npm install
 
-**Set up environment variables:**
-</br>
-Create a .env file in the backend directory and add your credentials:
+4 **Set up environment variables:**
+- Create a .env file in the backend directory and add your credentials:
+
     ```bash
     DATABASE_URL=your_mongo_database_url
     CLOUD_NAME=your_cloudinary_cloud_name
@@ -68,28 +65,22 @@ Create a .env file in the backend directory and add your credentials:
     CLOUDINARY_API_SECRET=your_cloudinary_api_secret
     FRONTEND_ORIGIN=front_end_url
 
-**Start the backend server:**
-</br>
+- **Start the backend server:**
 npm start
 
-**Navigate to the frontend directory:**
-</br>
+6 **Navigate to the frontend directory:**
 cd frontend
 
-**Install frontend dependencies:**
-</br>
+7 **Install frontend dependencies:**
 npm install
 
-**.env setup**
-</br>
+8 **.env setup**
 Update the API endpoint URL in your frontend to match your backend server. You can configure this in your .env or directly in the API call files.
 
-**Start the frontend development server:**
-</br>
+9 **Start the frontend development server:**
 npm start
 
-**Running server**
-</br>
+10 **Running server**
 - The frontend will be running on http://localhost:5173.
 - The backend server will be running on http://localhost:5174.
 
