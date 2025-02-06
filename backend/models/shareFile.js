@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 const Schema=mongoose.Schema;
 
 const shareFileSchema=new Schema({
+    fileName:{
+        type :String,
+        required:true
+    },
     fileType:{
         type :String,
         required:true

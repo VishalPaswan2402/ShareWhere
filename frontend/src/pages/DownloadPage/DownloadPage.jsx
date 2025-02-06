@@ -11,7 +11,7 @@ export default function DownloadPage(props) {
 
     const [isKey, setIsKey] = useState(false);
     const [searching, setSearching] = useState(false);
-    const [downloadAvl, setDownloadAvl] = useState(false);
+    const [downloadAvl, setDownloadAvl] = useState(false); 
     const [fileType, setFileType] = useState(null);
     const [urlLink, setUrlLink] = useState(null);
     const [errMsg, setErrMsg] = useState(null);
@@ -37,37 +37,51 @@ export default function DownloadPage(props) {
         try {
             setSearching(true);
             const response = await axios.post(backend_url + "/api/sharewhere/downloadFile", { secretKey });
-            console.log(response.data);
-            setFileType(response.data.dataType);
+            // console.log(response.data);
+            let fileExName=response.data.dataName;
+            if(fileExName.length>20){
+                const startingName=fileExName.slice(0,8);
+                const endingName=fileExName.slice(-8);
+                fileExName=`${startingName}...${endingName}`;
+            }
+            setFileType(fileExName);
             setUrlLink(response.data.dataUrl);
             setDownloadAvl(true);
         } catch (error) {
+            // console.log("Error d");
+            // console.log(error.message);
+            if(error){
+                // console.log("e",error)
+                setErrMsg(error.message);
+                setIsKey(true);
+            setSearching(false);
+            }
             setErrMsg(error.response.data.message + " ! Check your secret code.");
             setIsKey(true);
             setSearching(false);
+            // console.log("End");
         }
     };
 
     // download...
     const downloadFile = async () => {
         try {
-            const fileUrl = urlLink; // Your Cloudinary file link
-            // Extract file extension dynamically
+            const fileUrl = urlLink;
             const urlParts = fileUrl.split(".");
-            const fileExtension = urlParts[urlParts.length - 1].split("?")[0]; // Handle query params
-            // Set default filename based on extension
+            
+            const fileExtension = urlParts[urlParts.length - 1].split("?")[0];
             const fileName = `Share_Where.${fileExtension}`;
             const response = await axios.get(fileUrl, { responseType: "blob" });
             const blobUrl = window.URL.createObjectURL(new Blob([response.data]));
 
             const link = document.createElement("a");
             link.href = blobUrl;
-            link.download = fileName; // Use dynamically extracted filename
+            link.download = fileName;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
 
-            window.URL.revokeObjectURL(blobUrl); // Clean up memory
+            window.URL.revokeObjectURL(blobUrl);
         } catch (error) {
             console.error("Download failed", error);
         }
@@ -79,10 +93,10 @@ export default function DownloadPage(props) {
                 (
                     <form onSubmit={downloadFileData}>
                         <div className="codeValue">
-                            <input type='text' placeholder='Enter Secret Code' className='secretCode' {...register("secretCode", { required: true })} />
+                            <input type='text' maxLength={6} placeholder='Enter Secret Code' className='secretCode' {...register("secretCode", { required: true })} />
                             {isKey ? <span className='req'>{errMsg ? errMsg : null}</span> : null}
                         </div>
-                        <Button type="submit" label="Verify Code" />
+                        <Button type="submit" label="Unlock File" icon="fa-solid fa-unlock-keyhole" />
                     </form>
                 )
                 :
@@ -90,7 +104,7 @@ export default function DownloadPage(props) {
                     downloadAvl ?
                         <div className='downDiv'>
                             <img className='planeImg' src={assets.dots} alt='' />
-                            <p className='fileType'>File_Type : {fileType ? fileType : null}</p>
+                            <p className='fileType'>File_Name : {fileType ? fileType : null}</p>
                             <Button label="Download File" click={downloadFile} />
                         </div>
                         :

@@ -9,3 +9,17 @@
     font-weight: 550;
     color: rgb(29, 88, 192);
 }
+
+.noCode{
+    font-size: 1.3rem;
+    color: rgb(176, 45, 45);
+    font-weight: 500;
+}
+.shareBack{
+    color: blue;
+    cursor: pointer;
+    font-weight: 500;
+}
+.shareBack:hover{
+    color: brown;
+}

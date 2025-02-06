@@ -58,7 +58,7 @@ export default function UploadFile() {
                 }
             );
             if (response) {
-                console.log("Upload Successful:", response.data);
+                // console.log("Upload Successful:", response.data);
                 navigate("/secretCodePage", {
                     state:
                     {
@@ -68,6 +68,8 @@ export default function UploadFile() {
             }
         } catch (error) {
             console.error("Upload Error:", error);
+            setIsFile(true);
+            setErrorMessage(error.message);
         }
         setUploading(false);
     };
@@ -83,7 +85,7 @@ export default function UploadFile() {
                             <p>
                                 {selectedFile && selectedFile.length > 0
                                     ? getShortFileName(selectedFile[0].name)
-                                    : "Select file to upload"}
+                                    : "Choose a file to share."}
                             </p>
                             <img src={assets.uploadFileImage} alt='' />
                         </label>

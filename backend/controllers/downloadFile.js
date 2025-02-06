@@ -13,9 +13,10 @@ const downloadFileController = async (req, res) => {
         if (!findFile) {
             return res.status(404).json({ message: "Secret code not matched.", error });
         }
-        console.log(findFile);
+        // console.log(findFile);
         return res.status(200).json({
             message: "Download your file",
+            dataName:findFile.fileName,
             dataUrl: findFile.shareUrl,
             dataType: findFile.fileType
         });

@@ -14,7 +14,7 @@ const db_url = process.env.DATABASE_URL || "mongodb://127.0.0.1:27017/sharewhere
 app.use(express.json());
 
 const corsOptions = {
-    origin: 'http://localhost:5174',  // React frontend url
+    origin: process.env.FRONTEND_ORIGIN,  // React frontend url
     credentials: true
 };
 

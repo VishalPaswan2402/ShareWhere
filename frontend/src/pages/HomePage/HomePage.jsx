@@ -15,9 +15,9 @@ export default function HomePage(props) {
     }
     return (
         <>
-            <Button label="Share File" icon="fa-solid fa-cloud-arrow-up" click={directToSharePage} />
+            <Button label="Share File" icon="fa-solid fa-upload" click={directToSharePage} />
             <p className='differ'>------ OR ------</p>
-            <Button label="Receive File" icon="fa-solid fa-cloud-arrow-down" click={directToDownloadPage} />
+            <Button label="Receive File" icon="fa-solid fa-download" click={directToDownloadPage} />
         </>
     )
 }
