@@ -46,7 +46,7 @@ This is a simple **MERN (MongoDB, Express, React, Node.js)** application that al
 
 1 **Clone the repository:**
 
-git clone https://github.com/yourusername/share-images.git
+git clone https://github.com/VishalPaswan2402/ShareWhere.git
 cd share-images
 
 2 **Navigate to the backend directory:**
