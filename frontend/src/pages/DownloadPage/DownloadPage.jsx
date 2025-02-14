@@ -11,10 +11,11 @@ export default function DownloadPage(props) {
 
     const [isKey, setIsKey] = useState(false);
     const [searching, setSearching] = useState(false);
-    const [downloadAvl, setDownloadAvl] = useState(false); 
+    const [downloadAvl, setDownloadAvl] = useState(false);
     const [fileType, setFileType] = useState(null);
     const [urlLink, setUrlLink] = useState(null);
     const [errMsg, setErrMsg] = useState(null);
+    const [textMsg, setTextMsg] = useState("Securing And Verifying...");
 
     const {
         register,
@@ -36,13 +37,26 @@ export default function DownloadPage(props) {
         setErrMsg(null);
         try {
             setSearching(true);
-            const response = await axios.post(backend_url + "/api/sharewhere/downloadFile", { secretKey });
+            const response = await axios.post(
+                backend_url + "/api/sharewhere/downloadFile",
+                { secretKey },
+                {
+                    onUploadProgress: (progressEvent) => {
+                        const percentCompleted = Math.round(
+                            (progressEvent.loaded * 100) / progressEvent.total
+                        );
+                        if (percentCompleted > 50) {
+                            setTextMsg("Securing And Searching...");
+                        }
+                    }
+                }
+            );
             // console.log(response.data);
-            let fileExName=response.data.dataName;
-            if(fileExName.length>20){
-                const startingName=fileExName.slice(0,8);
-                const endingName=fileExName.slice(-8);
-                fileExName=`${startingName}...${endingName}`;
+            let fileExName = response.data.dataName;
+            if (fileExName.length > 20) {
+                const startingName = fileExName.slice(0, 8);
+                const endingName = fileExName.slice(-8);
+                fileExName = `${startingName}...${endingName}`;
             }
             setFileType(fileExName);
             setUrlLink(response.data.dataUrl);
@@ -50,11 +64,11 @@ export default function DownloadPage(props) {
         } catch (error) {
             // console.log("Error d");
             // console.log(error.message);
-            if(error){
+            if (error) {
                 // console.log("e",error)
                 setErrMsg(error.message);
                 setIsKey(true);
-            setSearching(false);
+                setSearching(false);
             }
             setErrMsg(error.response.data.message + " ! Check your secret code.");
             setIsKey(true);
@@ -67,12 +81,30 @@ export default function DownloadPage(props) {
     const downloadFile = async () => {
         try {
             const fileUrl = urlLink;
-            const urlParts = fileUrl.split(".");
-            
-            const fileExtension = urlParts[urlParts.length - 1].split("?")[0];
-            const fileName = `Share_Where.${fileExtension}`;
             const response = await axios.get(fileUrl, { responseType: "blob" });
-            const blobUrl = window.URL.createObjectURL(new Blob([response.data]));
+
+            // Determine file type from response headers if available
+            const mimeType = response.headers["content-type"];
+            let fileExtension = "";
+
+            if (mimeType) {
+                if (mimeType.includes("pdf")) {
+                    fileExtension = "pdf";
+                } else if (mimeType.includes("image")) {
+                    fileExtension = mimeType.split("/")[1]; // Extract image format (e.g., jpg, png)
+                } else {
+                    console.warn("Unsupported file type, using default extension.");
+                    fileExtension = "file"; // Default unknown extension
+                }
+            } else {
+                //Extract extension from URL if MIME type is missing
+                const urlParts = fileUrl.split(".");
+                fileExtension = urlParts[urlParts.length - 1].split("?")[0];
+            }
+
+            const fileName = `Share_Where.${fileExtension}`;
+            const blob = new Blob([response.data], { type: mimeType });
+            const blobUrl = window.URL.createObjectURL(blob);
 
             const link = document.createElement("a");
             link.href = blobUrl;
@@ -86,6 +118,7 @@ export default function DownloadPage(props) {
             console.error("Download failed", error);
         }
     };
+
 
     return (
         <>
@@ -108,7 +141,7 @@ export default function DownloadPage(props) {
                             <Button label="Download File" click={downloadFile} />
                         </div>
                         :
-                        <Loader textMsg="Securing And Searching..." />
+                        <Loader textMsg={textMsg} />
                 )
             }
         </>

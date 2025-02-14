@@ -17,6 +17,7 @@ export default function UploadFile() {
     const [uploading, setUploading] = useState(false);
     const [isFile, setIsFile] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [textMsg,setTextMsg]=useState("Securing And Initializing...");
 
     const getShortFileName = (fileName) => {
         return fileName.length > 10 ? fileName.substring(0, 10) + "..." : fileName;
@@ -45,7 +46,7 @@ export default function UploadFile() {
                 setUploading(false);
                 setIsFile(true);
                 setErrorMessage("File size exceed 5MB");
-            }, 5000);
+            }, 3000);
             return;
         }
 
@@ -54,7 +55,15 @@ export default function UploadFile() {
                 backend_url + "/api/sharewhere/uploadFileToShare",
                 formData,
                 {
-                    headers: { "Content-Type": "multipart/form-data" }
+                    headers: { "Content-Type": "multipart/form-data" },
+                    onUploadProgress: (progressEvent) => {
+                        const percentCompleted = Math.round(
+                            (progressEvent.loaded * 100) / progressEvent.total
+                        );
+                        if(percentCompleted>50){
+                            setTextMsg("Securing And Sharing...");
+                        }
+                    }
                 }
             );
             if (response) {
@@ -79,7 +88,7 @@ export default function UploadFile() {
             <form onSubmit={uploadFileToServer}>
                 {!uploading ?
                     <div className="uploadBox">
-                        <input type="file" id="image" hidden accept="image/png, image/jpeg, image/jpg, image/gif, image/webp" {...register("fileUploaded", { required: true })} />
+                        <input type="file" id="image" hidden accept="image/*,application/pdf"  {...register("fileUploaded", { required: true })} />
                         <label htmlFor="image" className="uploadFile">
                             <img src={assets.uploadFileImage} alt='' />
                             <p>
@@ -90,14 +99,10 @@ export default function UploadFile() {
                             <img src={assets.uploadFileImage} alt='' />
                         </label>
                         {isFile ? <span className='error'>{errorMessage}</span> : null}
+                        <Button type="submit" label="Secure & Share" />
                     </div>
                     :
-                    <Loader textMsg="Securing And Sharing..." />
-                }
-                {!uploading ?
-                    <Button type="submit" label="Secure & Share" />
-                    :
-                    null
+                    <Loader textMsg={textMsg} />
                 }
             </form>
         </div>
