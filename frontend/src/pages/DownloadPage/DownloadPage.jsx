@@ -7,7 +7,7 @@ import Loader from '../../components/Loader/Loader'
 import assets from '../../assets/assets'
 
 export default function DownloadPage(props) {
-    const backend_url = "http://localhost:8080";
+    const backend_url = "https://sharewherebackend.onrender.com";
 
     const [isKey, setIsKey] = useState(false);
     const [searching, setSearching] = useState(false);

@@ -9,7 +9,7 @@ import Button from "../Button/Button.jsx";
 
 
 export default function UploadFile() {
-    const backend_url = "http://localhost:8080";
+    const backend_url = "https://sharewherebackend.onrender.com";
 
     const navigate = useNavigate();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
