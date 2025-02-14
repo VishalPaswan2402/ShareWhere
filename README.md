@@ -20,6 +20,9 @@ This is a simple **MERN (MongoDB, Express, React, Node.js)** application that al
 - **CSS**: Styling the user interface.
 - **Font Awesome**: Icon library used to add scalable vector icons.
 
+## Live Project Link
+[Live Project - Share Where](https://sharewhere.onrender.com)
+
 ## Website images
 
 ### Home page
