@@ -1,0 +1,37 @@
+.link-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+.link-circle {
+    height: 25px;
+    width: 25px;
+    border: 2px solid gray;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.fa-brands {
+    font-size: 0.9rem;
+    margin-top: 1px;
+    color: gray;
+}
+
+.link-circle:hover {
+    border-color: rgb(58, 34, 196);
+    background-color: rgba(97, 97, 172, 0.258);
+}
+
+.link-circle:hover .fa-brands {
+    color: rgb(58, 34, 196);
+}

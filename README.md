@@ -1,22 +1,21 @@
 # ShareWhere - MERN Application
 
-This is a simple **MERN (MongoDB, Express, React, Node.js)** application that allows users to upload, share, and download images using a **secret code**. After uploading an image, the user gets a secret code to securely download the image.
+This is a simple **MERN (MongoDB, Express, React, Node.js)** application that allows users to upload, share, and download images and pdf using a **secret code**. After uploading an image, the user gets a secret code to securely download the file.
 
 ## Features
-- **Upload Image**: Users can select and upload images to the server.
-- **Secret Code**: A secret code is generated for each image upload, which is required to download the image.
-- **Secure Sharing**: Only users with the correct secret code can download the image.
-- **Image Display**: View the uploaded image directly through the generated URL.
+- **Upload Image or PDF**: Users can select and upload images or pdf to the server.
+- **Secret Code**: A secret code is generated for each file upload, which is required to download the file.
+- **Secure Sharing**: Only users with the correct secret code can download the file.
 - **Responsive**: The application is responsive, ensuring it works well on both desktop and mobile devices.
-- **No Credentials Required**: No sign-up or login credentials are required to use the image upload and sharing features.
+- **No Credentials Required**: No sign-up or login credentials are required to use the image and pdf upload and sharing features.
   
 ## Technologies Used
-- **MongoDB**: Database to store image metadata (like URL, filename, and secret code).
+- **MongoDB**: Database to store image and pdf metadata (like URL, filename, and secret code).
 - **Express.js**: Web framework to handle API routes.
 - **React**: Frontend framework to build the user interface.
 - **Node.js**: JavaScript runtime to run the server-side code.
 - **Multer**: Middleware for handling file uploads.
-- **Cloudinary** (or local storage, depending on implementation): For storing the images securely.
+- **Cloudinary** (or local storage, depending on implementation): For storing the file securely.
 - **CSS**: Styling the user interface.
 - **Font Awesome**: Icon library used to add scalable vector icons.
 
@@ -111,15 +110,15 @@ This is a simple **MERN (MongoDB, Express, React, Node.js)** application that al
 
 ## Usage
 - Open the application in your browser.
-- Click on the "Choose File" button to select an image from your device.
-- Click "Upload & Share" to upload the image to the server.
+- Click on the "Choose File" button to select an image or pdf from your device.
+- Click "Upload & Share" to upload the file to the server.
 - Once the upload is complete, a secret code will be provided.
-- To download the image, enter the secret code on the download image.
+- To download the file, enter the secret code on the download file.
 
 ## Additional features:
 - **Simplicity**: Easy to use with minimal steps—just upload, share, and download using a secret code.
-- **Security**: Protects image downloads with a secret code, ensuring that only authorized users can access the files.
+- **Security**: Protects data downloads with a secret code, ensuring that only authorized users can access the files.
 - **No Account Needed**: Users don't need to create an account, making the process fast and accessible.
 - **Mobile-Friendly**: The responsive design ensures the application works seamlessly on mobile devices, enhancing user experience.
-- **Cloud Storage**: Using Cloudinary (or similar), images are stored securely in the cloud, reducing the risk of data loss.
-- **Fast Sharing**: Share images quickly by generating a secure URL and a secret code for easy access.
+- **Cloud Storage**: Using Cloudinary (or similar), files are stored securely in the cloud, reducing the risk of data loss.
+- **Fast Sharing**: Share files quickly by generating a secure URL and a secret code for easy access.

@@ -88,16 +88,18 @@ export default function UploadFile() {
             <form onSubmit={uploadFileToServer}>
                 {!uploading ?
                     <div className="uploadBox">
+                        <div className="input-select">
                         <input type="file" id="image" hidden accept="image/*,application/pdf"  {...register("fileUploaded", { required: true })} />
                         <label htmlFor="image" className="uploadFile">
-                            <img src={assets.uploadFileImage} alt='' />
+                            <img src={assets.gallery} alt='' />
                             <p>
                                 {selectedFile && selectedFile.length > 0
                                     ? getShortFileName(selectedFile[0].name)
                                     : "Choose a file to share."}
                             </p>
-                            <img src={assets.uploadFileImage} alt='' />
+                            <img src={assets.gallery} alt='' />
                         </label>
+                        </div>
                         {isFile ? <span className='error'>{errorMessage}</span> : null}
                         <Button type="submit" label="Secure & Share" />
                     </div>

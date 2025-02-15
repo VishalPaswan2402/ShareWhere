@@ -1,4 +1,4 @@
-.uploadBox:hover .uploadFile {
+.input-select:hover .uploadFile {
     color: blue;
     border: 2px solid blue;
 }
@@ -22,7 +22,12 @@
 }
 
 .uploadFile img {
+    filter: grayscale(100%);
     width: 40px;
+}
+
+.input-select:hover .uploadFile img {
+    filter: grayscale(0%);
 }
 
 .error {
