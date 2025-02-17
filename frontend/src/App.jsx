@@ -7,7 +7,6 @@ import Footer from './components/Footer/Footer'
 import { Route, Router, Routes } from 'react-router-dom'
 import Logo from './components/Logo/Logo'
 import ErrorPage from './pages/ErrorPage/ErrorPage'
-import SocialMedia from './components/SocialMedia/SocialMedia'
 
 function App() {
 
@@ -23,7 +22,6 @@ function App() {
             <Route path='/downloadFile' element={<DownloadPage />}></Route>
             <Route path='*' element={<ErrorPage />}></Route>
           </Routes>
-          {/* <SocialMedia/> */}
           <Footer />
         </div>
       </div>

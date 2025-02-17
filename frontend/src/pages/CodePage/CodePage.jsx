@@ -17,11 +17,14 @@ export default function CodePage(props) {
         <>
             {secretKey ? (
                 <>
-                    <p className='textCode'>Secret Code To Download Your File</p>
+                    <p className='textCode'>Your file is ready ! Use the secret code to download it.
+                        <p className='validInfo'>valid for 1 hour only !</p>
+                    </p>
                     <p className='codeNum'>{secretKey}</p>
                 </>
             ) : (
                 <>
+                    
                     <p className='noCode'>No secret code available !</p>
                     <Button label="Back to Home." icon='fa-solid fa-house' click={handleHomePage}></Button>
                 </>
